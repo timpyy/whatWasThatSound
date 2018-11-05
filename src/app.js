@@ -17,5 +17,35 @@ Sound.find({}, function(err, result, count) {
   res.render('myTemplate', {'sounds': result});
 })
 });
-
+app.get('/filter', (req, res) => {
+  let what1 = req.query.what;
+  let where1 = req.query.where;
+  let date1 = req.query.date;
+  let hour1 = req.query.hour;
+  if(what1 != "") {
+    Sound.find({'what': what1}, function(err, result, count) {
+      res.render('myTemplate', {'sounds': result});
+    })
+  }
+  else if(where1 != "") {
+    Sound.find({'where': where1}, function(err, result, count) {
+      res.render('myTemplate', {'sounds': result});
+    })
+  }
+  else if(date1 != "") {
+    Sound.find({'date': date1}, function(err, result, count) {
+      res.render('myTemplate', {'sounds': result});
+    })
+  }
+  else if(hour1 != 0) {
+    Sound.find({'hour': hour1}, function(err, result, count) {
+      res.render('myTemplate', {'sounds': result});
+    })
+  }
+  else {
+    Sound.find({}, function(err, result, count) {
+      res.render('myTemplate', {'sounds': result});
+    })
+  }
+});
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
