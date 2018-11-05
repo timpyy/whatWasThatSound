@@ -1,11 +1,11 @@
 const mongoose = require('mongoose'),
   URLSlugs = require('mongoose-url-slugs');
 const Sound = new mongoose.Schema({
-  sound: String,
-  place: String,
+  what: String,
+  where: String,
   date: String,
   hour: Number,
-  description: String
+  desc: String
 });
 mongoose.model('Sound', Sound);
 // my schema goes here!
