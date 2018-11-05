@@ -17,6 +17,7 @@ Sound.find({}, function(err, result, count) {
   res.render('myTemplate', {'sounds': result});
 })
 });
+
 app.get('/filter', (req, res) => {
   let what1 = req.query.what;
   let where1 = req.query.where;
@@ -48,4 +49,21 @@ app.get('/filter', (req, res) => {
     })
   }
 });
+
+app.get('/sounds/add', (req, res) => {
+  res.render('add');
+});
+
+app.post('/sounds/add', (req, res) => {
+  new Sound({
+    'what' : req.body.what,
+    'where' : req.body.where,
+    'date' : req.body.date,
+    'hour' : req.body.hour,
+    'desc' : req.body.desc
+  }).save(function(err, result, count){
+    res.redirect('/');
+  });
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
