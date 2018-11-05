@@ -19,6 +19,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "hbs": "^4.0.1",
-    "mongoose": "^5.3.8"
+    "mongoose": "^5.3.9",
+    "mongoose-url-slugs": "^1.0.2"
   }
 }
